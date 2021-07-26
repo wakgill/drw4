@@ -4,7 +4,7 @@
     <p>I write software. Occasionally, I will compose a post for this blog.
       
         <div class="widget-content">
-              <h3>Meta</h3>   
+              <h4>Meta</h4>   
 <ul style="
     margin: 0;
     padding: 0;
@@ -40,7 +40,7 @@
 </div>--->
     
      {% if page.url != '/' %}
-    <h3>Recent Posts</h3>
+    <h4>Recent Posts</h4>
     {% for post in site.posts limit: 3 %}
     <div class="post-sidebar">
       {{ post.date | date: "%Y-%m-%d" }}<br />
@@ -52,7 +52,7 @@
      
     
    
-    <h3>License</h3>
+    <h4>License</h4>
     <p style="font-size: 10pt">
     The content for this site is
     <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>.
