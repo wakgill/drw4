@@ -18,16 +18,7 @@
     {% endfor %}
     {% endif %}
     
-      {% if page.url != '/' %}
-    <h3>Recent Notes</h3>
-    {% assign notes = site.notes | sort: 'date' | reverse %}
-{% for notes in notes limit:4  %}
-   <div class="post-sidebar">
-      <a href="{{ notes.url | prepend: site.baseurl }}">{{ notes.date }}</a>
-  </div>
-{% endfor %}
-      {% endif %}
-
+     
     
    
     <h3>License</h3>
