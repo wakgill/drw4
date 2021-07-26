@@ -1,0 +1,30 @@
+---
+layout: defaultresearch
+---
+
+ {%- if page.title -%}
+    <h1 class="page-title"> <a class="rss pull-right" href="/feed.xml"><i class="fa fa-rss"></i></a>
+      
+      {{ page.title }}</h1>
+  {%- endif -%}
+
+{% if page.date %}
+    <p class="date">
+       Updated {{ page.date | date: "%Y-%m-%d" }}
+        on <a href="/">mkgll.com</a>
+        <span class="hidden-xs">
+          &mdash;
+          <a href="{{ page.url }}">
+            Permalink
+          </a>
+        </span>
+    </p>
+    {% endif %}
+
+
+<article>
+
+
+  {{ content }}
+  
+  </article>

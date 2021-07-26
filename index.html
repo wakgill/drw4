@@ -1,0 +1,72 @@
+---
+layout: default
+title: Deryk's blog
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+<div id="entry" class="entry-asset asset hentry">
+   <div class="asset-header">
+    <h2 class="asset-name entry-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+    {{ post.content }}
+            </div>
+      
+  </div>
+       <div class="asset-footer">
+        <div class="asset-meta">
+    <!-- <div class="user-pic">
+
+    <a href="http://www.antipope.org/mt/mt-cp.cgi?__mode=view&amp;blog_id=1&amp;id=2"><img
+        src="/mt/mt-static/support/assets_c/userpics/userpic-2-100x100.png"
+        width="36" height="36" alt="Charlie Stross" /></a>
+
+</div>
+ -->
+    <span class="byline">
+
+        Posted by <span class="vcard author"><a href="/">DM</a></span> on <abbr class="published" title="{{ post.date | date: "%-d %B %Y"}}">{{ post.date | date: "%-d %B %Y"}}</abbr>
+    </span>
+<!--
+
+    <a href="http://www.antipope.org/charlie/blog-static/2021/07/crib-sheet-dead-lies-dreaming.html#comments" class="entry-meta-comments" title="80 Comments">80</a>
+    
+  <a href="javascript:void(0)" onclick="return mtScore(4200)" id="scoring-id-4200" class="scoring">
+        <span id="scoring-vote-4200" class="scoring-vote">Vote</span>
+        <span id="scoring-score-4200" class="scoring-score">0</span>
+        <span id="scoring-score-label-4200" class="scoring-score-label">Votes</span>
+    </a> 
+ -->
+</div>
+
+</div>
+</div>
+ 
+  </div>
+  {% endfor %}
+</div>
+
+ 
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="/page{{paginator.next_page}}/">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="/page{{paginator.previous_page}}/">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>

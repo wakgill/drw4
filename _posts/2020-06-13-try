@@ -1,0 +1,60 @@
+---
+layout: post
+title: Can we talk about client-side certificates?
+---
+
+You step out of an elevator on the third floor of a university building. You’re in a beige carpeted corridor, with whitewashed walls on one side. On the other side, a glass wall separates you from the Disruptive Technology Laboratory. Open the door and look inside. The lab is about thirty feet square, with small offices off to either side. It’s cluttered with open plan desks; at one corner a cluster of black sofas sit in a circle around a big television set with a stack of video equipment and an Xbox. At the opposite corner, there’s a bench with oscilloscopes, soldering irons, and the other detritus of electronic prototyping.
+
+<details>
+<summary>...</summary>
+<pre>
+$ cat strconv/itos.$redacted
+use bytes;
+use types;
+
+/***
+ * Converts an i64 to a string, in base 10. The return value is statically
+ * allocated and will be overwritten on subsequent calls; see [strings::dup] to
+ * duplicate the result, or [strconv::itosb] to pass your own string buffer.
+ *
+ *	let a = strconv::i64tos(1234);
+ *	io::printf("%s", a); // 1234
+ *
+ *	let a = strconv::i64tos(1234);
+ *	let b = strconv::i64tos(4321);
+ *	io::printf("%s %s", a, b); // 4321 4321
+ */
+export fn i64tos(i: i64) const *str =
+{
+	static assert(types::I64_MAX == 9223372036854775807,
+		"Maximum integer value exceeds buffer length");
+	static let s = struct {
+		l: size = 0,
+		b: [22]u8 = [0: u8...], /* 20 digits plus NUL and '-' */
+	};
+	s.l = 0;
+	s.b = [0: u8...];
+	const isneg = i &lt; 0;
+	if (isneg) {
+		s.b[s.l] = '-': u8;
+		s.l += 1;
+		i = -i;
+	} else if (i == 0) {
+		s.b[s.l] = '0': u8;
+		s.l += 1;
+	};
+
+while (i &gt; 0) {
+		s.b[s.l] = '0': u8 + (i % 10): u8;
+		s.l += 1;
+		i /= 10;
+	};
+
+const x: size = if (isneg) 1 else 0;
+	bytes::reverse(s.b[x..s.l]);
+
+s.b[s.l] = 0: u8;
+	return &amp;s: *str;
+};
+</pre>
+</details>

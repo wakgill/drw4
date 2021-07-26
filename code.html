@@ -1,0 +1,24 @@
+---
+layout: page
+title: code
+---
+
+{% assign items = site.collections | sort: 'date' | reverse %}
+
+{% for item in collections limit:500 %}
+  {% if item.layout == 'note' %}
+<div class="post-stub">
+       <h2>
+      <span class="date hidden-xs">{{ item.date | date: "%Y-%m-%d" }}    </span>
+            <span class="title">   <a href="{{ item.url | relative_url }}">{{ item.title }} </a>
+         </span>
+       
+       
+       </h2>
+       
+        <p class="p-content"> {{ item.excerpt  }} </p>         
+         
+        
+ </div> 
+  {% endif %}   
+{% endfor %}

@@ -1,0 +1,37 @@
+
+
+
+{% assign replies = site.replies | sort: 'date' | reverse %}
+{% for replies in replies %}
+
+<div class="h-entry note post-stub">
+ 
+ 
+ <h2 class="post-stub"><a href="{{ replies.url | prepend: site.baseurl }}">
+   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <time class="dt-published" datetime="{{ replies.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ replies.date | date: date_to_rfc822 }}
+      </time>
+   </a></h5>
+
+     {% if replies.reply %}
+ <span class="reply-context" style="display:block;background-color: #f5f5f5;text-indent: 1em;">↳ In reply to <a href="{{ replies.reply | relative_url }}" class="u-in-reply-to h-cite">{{ replies.reply }}</a></span>
+  {% endif %}
+ 
+ <p class="p-content"> {{ replies.content }}
+ </p>
+ 
+   {% if replies.image %}
+      <div class="post-image">
+        <a href="{{ replies.url | relative_url }}" style="
+    text-decoration: none;
+">
+          <img src="{{ replies.image | relative_url }}" alt="{{ replies.alt }}">
+          
+        </a>
+       </div>  
+      {% endif %}
+ 
+</div>
+
+{% endfor %}  

@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+
+<article>
+    {% if page.reply %}
+ <p><span class="reply-context" style="display:block;background-color: #f5f5f5;text-indent: 1em; line-break:anywhere;">↳ In reply to <a href="{{ page.reply | relative_url }}" class="u-in-reply-to h-cite">{{ page.reply }}</a></span></p>
+  {% endif %}
+ 
+
+
+  {{ content }}
+ 
+  {% if page.image %}
+      <div class="post-image">
+        <a href="{{ page.url | relative_url }}" style="
+    text-decoration: none;
+">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.alt }}">
+          
+        </a>
+       </div>  
+      {% endif %}  
+ 
+  {% if page.url != '/' %}
+    <p class="date">
+        {% if page.date %}Published {{ page.date | date: "%Y-%m-%d" }}{% endif %}
+        on <a href="/">Deryk Makgill's website</a>
+        <span class="hidden-xs">
+          &mdash;
+          <a href="{{ page.url }}">
+            Permalink
+          </a>
+        </span>
+    </p>
+    {% endif %}
+    
+    {% comment %} 
+  Previous / Next functions
+  Assign variables from the entire portfolio collection
+{% endcomment %}
+{% assign items_raw = site.notes | where: 'type', page.type %}
+{% assign items = items_raw | sort: 'year' | reverse %}
+
+{% if items.size > 1 %}
+  {% comment %}
+    Store the index position of the matching items
+  {% endcomment %}
+  {% for item in items %}
+    {% if item.title == page.title %}
+      {% assign item_index = forloop.index %}
+    {% endif %}
+  {% endfor %}
+  
+  {% assign prev_index = item_index | plus: 1 %}
+  {% assign next_index = item_index | minus: 1 %}
+  
+  {% for item in items %}
+    {% if forloop.index == prev_index %}
+      {% assign prev = item %}
+    {% endif %}
+    {% if forloop.index == next_index %}
+      {% assign next = item %}
+    {% endif %}
+  {% endfor %}
+
+  <p>
+    {% if prev %}
+      <a href="{{ prev.url | relative_url }}" class="prev" title="{{ prev.date }}">&lt; Older</a>
+    {% endif %}
+    {% if prev and next %}
+      <span> | </span>
+    {% endif %}
+    {% if next %}
+      <a href="{{ next.url | relative_url }}" class="next" title="{{ next.date }}">Newer &gt;</a>
+    {% endif %}
+  </p>
+{% endif %}
+
+  
+  </article>

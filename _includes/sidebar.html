@@ -1,0 +1,44 @@
+<div class="sidebar">
+    <hr class="visible-xs" />
+    <img class="avatar" src="/drw/assets/img/mkgll_avatar_2019-03-07.jpg" alt="mkgll avatar" />
+    <p>I write software. Occasionally, I will compose a post for this blog.
+   
+    
+  <div class="welovecodinghorror" style="margin-bottom:15px;background: #f2e0b0;padding: 5px;margin-left: -5px;margin-right: -5px;"> 
+[ad] Enjoy the blog? Read <b><a href="https://www.amazon.com/dp/B008HUMTO0/?tag=codihorr-20">Effective Programming: More than Writing Code</a></b> and <b><a href="https://www.amazon.com/dp/B00BU3KPQU/?tag=codihorr-20">How to Stop Sucking and Be Awesome Instead</a></b>  on your Kindle, iPad, Nook, or as a PDF.
+</div>
+    
+     {% if page.url != '/' %}
+    <h3>Recent Posts</h3>
+    {% for post in site.posts limit: 3 %}
+    <div class="post-sidebar">
+      {{ post.date | date: "%Y-%m-%d" }}<br />
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+      {% if page.url != '/' %}
+    <h3>Recent Notes</h3>
+    {% assign notes = site.notes | sort: 'date' | reverse %}
+{% for notes in notes limit:4  %}
+   <div class="post-sidebar">
+      <a href="{{ notes.url | prepend: site.baseurl }}">{{ notes.date }}</a>
+  </div>
+{% endfor %}
+      {% endif %}
+
+    
+   
+    <h3>License</h3>
+    <p style="font-size: 10pt">
+    The content for this site is
+    <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>.
+    The <a href="https://git.sr.ht/~sircmpwn/drewdevault.com">code</a> for this site is
+    <a href="https://opensource.org/licenses/MIT">MIT</a>.
+    </p>
+    <small class="text-muted">Have you seen <a href="https://sourcehut.org">sourcehut</a>?</small>
+    <div class="spacer" style="margin-top: 50px;"></div>
+</div>
+
+  

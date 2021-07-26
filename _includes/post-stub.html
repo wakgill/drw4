@@ -1,0 +1,16 @@
+<div class="post-stub">
+    <h2>
+      <span class="date hidden-xs">
+        {{ include.post.date | date: "%Y-%m-%d" }}
+      </span>
+      <span class="title">
+          {% if post.title %}
+        <a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+        {% endif %}
+      </span>
+    </h2>
+    {% if include.post._url or include.no_excerpt %}
+    {% else %}
+    {{ include.post.excerpt }}
+    {% endif %}
+</div>

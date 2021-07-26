@@ -1,0 +1,25 @@
+---
+layout: basic
+---
+
+<h1 class="page-title">
+    {{ page.title }}
+</h1>
+
+<div class="content">
+    {% if page.url != '/' %}
+    <p class="date">
+        {% if page.date %}Published {{ page.date | date: "%Y-%m-%d" }}{% endif %}
+        by Drew Chadwick DeVault
+        <span class="hidden-xs">
+          &mdash;
+          <a href="{{ page.url }}">
+            Permalink
+          </a>
+        </span>
+    </p>
+    {% endif %}
+    <article>
+      {{ content }}
+    </article>
+</div>

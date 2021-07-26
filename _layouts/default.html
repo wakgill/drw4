@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+     
+    
+
+  
+
+   <div class="container">
+     
+   
+<div class="content">
+  
+   <div class="headfoot" style="
+    margin-bottom: 10px;
+">
+  <ul style="
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+">
+  
+
+<!---<li style="
+    display: inline;
+    /* margin-left: 5px; */
+    margin-right: 5px;
+"><a href="/" style="color: #333;text-decoration: none;">Deryk Makgill</a></li>--->
+    
+    <span><li style="
+    display: inline;
+    margin-left: 0px;
+    margin-right: 5px;
+"><a href="/" style="
+">Home</a></li>
+  <li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="/news/all" style="
+">Posts</a></li>
+  <li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="/news.rss" style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+">RSS</a></li>
+  <li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="contact" style="
+                           ">Contact</a></li></span>
+  </ul></div>
+{{ content }}
+
+</div>
+
+  
+  {%- include sidebar.html -%}
+  
+  </div>
+  
+</body>
+</html>
+

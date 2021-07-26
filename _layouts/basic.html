@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+<ul style="
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+">
+  <li style="
+    display: inline;
+    /* margin-left: 5px; */
+    margin-right: 5px;
+"><a href="/" style="
+    color: #444;
+">Home</a></li>
+  <li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="/news/all" style="
+    color: #444;
+">Posts</a></li>
+
+  <li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="contact" style="
+    color: #444;
+">Notes</a></li><li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="contact" style="
+    color: #444;
+">Links</a></li><li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="contact" style="
+    color: #444;
+">Photos</a></li><li style="
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+"><a href="contact" style="
+    color: #444;
+">Contact</a></li>
+  </ul>
+    <br>
+   <div class="container">
+
+<div class="content">
+
+   {%- if page.title -%}
+    <h1 class="page-title"> <a class="rss pull-right" href="/feed.xml"><i class="fa fa-rss"></i></a>
+      
+      {{ page.title }}</h1>
+  {%- endif -%}
+  
+{{ content }}
+
+</div>
+  
+  </div>
+  
+</body>
+</html>
